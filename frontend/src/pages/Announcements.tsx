@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit2, Trash2, X, Save } from 'lucide-react';
 import styles from './Announcements.module.css';
@@ -61,7 +62,7 @@ const Announcements = () => {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/announcements');
+      const response = await fetch(`${API_BASE_URL}/api/announcements`);
       const data = await response.json();
       setAnnouncements(data.sort((a: Announcement, b: Announcement) => {
         if (a.tag === 'Urgent' && b.tag !== 'Urgent') return -1;
@@ -81,8 +82,8 @@ const Announcements = () => {
 
     try {
       const url = editingId 
-        ? `http://localhost:5000/api/announcements/${editingId}`
-        : 'http://localhost:5000/api/announcements';
+        ? `${API_BASE_URL}/api/announcements/${editingId}`
+        : `${API_BASE_URL}/api/announcements`;
       
       const response = await fetch(url, {
         method: editingId ? 'PUT' : 'POST',
@@ -126,7 +127,7 @@ const Announcements = () => {
 
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`http://localhost:5000/api/announcements/${deleteConfirm.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/announcements/${deleteConfirm.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
