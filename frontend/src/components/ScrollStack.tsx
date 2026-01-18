@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useCallback, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import Lenis from 'lenis';
 import './ScrollStack.css';
@@ -40,12 +40,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   rotationAmount = 0,
   blurAmount = 0,
   useWindowScroll = false,
-  onStackComplete
+  // onStackComplete
 }) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
   const cardLayoutsRef = useRef<number[]>([]); // Cache original top positions
-  const stackCompletedRef = useRef(false);
+  // const stackCompletedRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const lastTransformsRef = useRef(new Map<number, any>());
@@ -74,21 +74,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
   
     // Determine the end boundary
-    let endElementTop = 0;
+    // Determine the end boundary
     const endElement = useWindowScroll
        ? (document.querySelector('.scroll-stack-end') as HTMLElement)
        : (scrollerRef.current?.querySelector('.scroll-stack-end') as HTMLElement);
-    
-    // We can't rely on getBoundingClientRect for layout stable calculation easily if things move, 
-    // but the end element is after the spacer, so its offsetTop relative to document/container should be stable.
-    if (endElement) {
-       endElementTop = useWindowScroll 
-          ? endElement.getBoundingClientRect().top + window.scrollY // Initial read should be fine or we need to cache this too. 
-                                                                    // Actually, since endElement is AFTER the flow, it might be pushed down.
-                                                                    // For simplicity, let's trust one read or reflow.
-                                                                    // Better: use relative cached offsets.
-          : endElement.offsetTop;
-    }
 
     // However, since we are moving cards with translate, flow might be reserved by margins.
     // Let's rely on cached layouts for cards.
@@ -140,11 +129,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const scale = 1 - scaleProgress * (1 - targetScale);
       const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
 
-      let blur = 0;
-      if (blurAmount) {
-         // Simplified blur logic
-         // ... existing logic ...
-      }
+      // Blur logic removed for now
+      // let blur = 0;
+      // if (blurAmount) { ... }
 
       let translateY = 0;
       const isPinned = currentScroll >= pinStart && currentScroll <= pinEnd;

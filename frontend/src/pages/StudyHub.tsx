@@ -1,19 +1,16 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BookOpen, Calendar, User, ArrowRight, Clock } from 'lucide-react';
-import type { Subject, TimetableSlot } from '../types';
+import type { Subject } from '../types';
 import styles from './StudyHub.module.css';
 import CalendarView from '../components/CalendarView';
 import { timetableData } from '../data/timetable';
 import { subjectsData } from '../data/subjects';
 
 const StudyHub = () => {
-  const [subjects, setSubjects] = useState<Subject[]>(subjectsData); // Initialize with local data
+  const [subjects] = useState<Subject[]>(subjectsData); // Initialize with local data
   const [selectedDate, setSelectedDate] = useState(new Date());
-  
-  // Removed loading state since we have local data now, or keep it false
-  const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   fetch('/api/studyhub/subjects')... 
@@ -26,7 +23,7 @@ const StudyHub = () => {
     return timetableData.filter(slot => slot.day === dayName);
   }, [selectedDate]);
 
-  if (loading) return <div className="loader">Loading Academic Resources...</div>;
+
 
   return (
     <div className="container" style={{ paddingTop: '4rem' }}>
