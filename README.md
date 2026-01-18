@@ -75,7 +75,7 @@ Follow these steps to run the project locally:
 
 Built with ❤️ by **Section A4**.
 
-- **Advait Kawale** - _Full Stack & UI/UX_
+- **Advait Kawale**
 - **Ranveer Bhortekar**
 - **Krish Parothi**
 - **Atif Azmi**
