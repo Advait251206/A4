@@ -75,39 +75,6 @@ Builds smart apps, breaks things ethically, fixes them professionally.`,
     linkedin: 'https://www.linkedin.com/in/om-singh-a18b34213'
   },
   {
-    id: 'pranaya',
-    name: 'Pranaya Chandekar',
-    role: 'Student',
-    interest: 'Technology',
-    photo: '',
-    bio: `I'm 2nd year cse student at Ramdeobaba University . Balancing books, dreams and binge-watching like a pro 😄`,
-    quote: 'Learning today is building Tommorow',
-    skills: [],
-    hobbies: [
-      'I like to explore new things and travelling',
-      'full time movies and series addict'
-    ],
-    github: '',
-    linkedin: ''
-  },
-  {
-    id: 'avni',
-    name: 'Avni Dongre',
-    role: 'Student',
-    interest: 'Technology',
-    photo: '',
-    bio: `Hi . I am Avni , Student of RBU 2nd year CSE .`,
-    quote: 'It always seems impossible until it\'s done.',
-    skills: [],
-    hobbies: [
-      'I like to draw,paint and read books',
-      'I also like to travel and try new receipes',
-      'I like playing sports in general'
-    ],
-    github: '',
-    linkedin: ''
-  },
-  {
     id: 'omkar',
     name: 'Omkar Sonat',
     role: 'Student',
@@ -167,25 +134,6 @@ Trains models, tunes hyperparameters, and trusts data more than instincts.`,
     quote: '(effort) = success',
     skills: [],
     hobbies: [],
-    github: '',
-    linkedin: ''
-  },
-  {
-    id: 'ameya',
-    name: 'Ameya Ingole',
-    role: 'Student',
-    interest: 'Technology',
-    photo: '',
-    bio: `Hi I'm Ameya Ingole, Student of Ramdeobaba University, B-tech 2nd year CSE`,
-    quote: 'Master the basics daily—excellence is just consistency done right.',
-    skills: ['Cybersecurity', 'Coding', 'Football'],
-    hobbies: [
-      'Exploring cybersecurity',
-      'coding',
-      'learning new tech',
-      'problem-solving',
-      'like to play Football'
-    ],
     github: '',
     linkedin: ''
   },
