@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout.tsx';
+import ScrollToTop from './components/ScrollToTop.tsx';
 
 // Placeholder Pages (we'll implement these next)
 import Home from './pages/Home.tsx';
@@ -14,6 +15,7 @@ import Announcements from './pages/Announcements.tsx';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
