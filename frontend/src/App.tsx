@@ -11,6 +11,7 @@ import GalleryDetail from './pages/GalleryDetail.tsx';
 import StudyHub from './pages/StudyHub.tsx';
 import SubjectDetail from './pages/SubjectDetail.tsx';
 import Announcements from './pages/Announcements.tsx';
+import Admin from './pages/Admin.tsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="study-hub" element={<StudyHub />} />
           <Route path="study-hub/:id" element={<SubjectDetail />} />
           <Route path="announcements" element={<Announcements />} />
+          <Route path="admin" element={<Admin />} />
         </Route>
       </Routes>
     </BrowserRouter>

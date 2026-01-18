@@ -1,0 +1,35 @@
+.content {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.paragraph {
+  margin: 0.5rem 0;
+}
+
+.header {
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.05rem;
+}
+
+.list {
+  margin: 0.75rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.bulletItem {
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bulletItem::before {
+  content: '';
+  flex-shrink: 0;
+}

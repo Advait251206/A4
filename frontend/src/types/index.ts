@@ -9,6 +9,7 @@ export interface TeamMember {
   bio: string;
   quote: string;
   skills: string[];
+  hobbies?: string[];
   linkedin?: string;
   github?: string;
 }

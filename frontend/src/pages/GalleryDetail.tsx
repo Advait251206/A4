@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import sportsBanner from '../assets/gallery/Sports.jpeg';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
@@ -16,7 +17,7 @@ const GalleryDetail = () => {
         {
           id: '1',
           eventId: 'sports',
-          url: '/gallery/Sports.jpeg',
+          url: sportsBanner,
           caption: 'Sports Event'
         }
       ]);

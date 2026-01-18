@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Rocket } from 'lucide-react';
+import { Menu, X, Rocket, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
+import AdminLogin from './AdminLogin';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(!!localStorage.getItem('adminToken'));
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -38,6 +41,26 @@ const Navbar = () => {
               {link.name}
             </NavLink>
           ))}
+          {isAdmin ? (
+            <button 
+              className={styles.logoutBtn}
+              onClick={() => {
+                localStorage.removeItem('adminToken');
+                setIsAdmin(false);
+              }}
+              title="Logout"
+            >
+              Logout
+            </button>
+          ) : (
+            <button 
+              className={styles.adminBtn}
+              onClick={() => setShowAdminLogin(true)}
+              title="Admin Access"
+            >
+              <Shield size={18} />
+            </button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -68,6 +91,14 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AdminLogin 
+        isOpen={showAdminLogin}
+        onClose={() => setShowAdminLogin(false)}
+        onLoginSuccess={() => {
+          setIsAdmin(true);
+        }}
+      />
     </nav>
   );
 };

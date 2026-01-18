@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import sportsBanner from '../assets/gallery/Sports.jpeg';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Image as ImageIcon } from 'lucide-react';
@@ -21,7 +22,7 @@ const Gallery = () => {
       {
         eventId: 'sports',
         eventName: 'Sports',
-        eventBanner: '/gallery/Sports.jpeg',
+        eventBanner: sportsBanner,
         imageCount: 1
       }
     ];
