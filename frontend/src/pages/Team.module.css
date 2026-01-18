@@ -1,0 +1,207 @@
+
+.container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at 50% 100%, #1a1b26 0%, #000 100%);
+  padding-top: 2rem;
+}
+
+.arcContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* The rotating ring */
+.orbit {
+  position: absolute;
+  top: 100px; /* Adjust to move the arc up/down */
+  width: 1400px;
+  height: 1400px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 50px rgba(0, 243, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Items at top edge */
+  transform-origin: center center;
+  /* We will rotate this ring via inline styles or framer-motion */
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: grab;
+}
+
+.orbit:active {
+  cursor: grabbing;
+}
+
+.memberItem {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* We transform origin to the center of the orbit so we can just rotate them to place them? 
+     No, better to just absolute position them or rotate the parent.
+     Actually, if they are children of .orbit, placing them at 'top: -something' and using transform-origin center is complex.
+     
+     Easier approach:
+     Items are children of .orbit.
+     They are positioned at angle theta.
+     x = R * sin(theta)
+     y = -R * cos(theta) (relative to center)
+     
+     Since .orbit is 1400x1400, Radius = 700.
+     Center is at 50% 50%.
+     
+     Placement: top: 0, left: 50%. This is -90deg (12 o'clock).
+     We want them distributed. 
+  */
+  width: 120px;
+  height: 120px;
+  margin-left: -60px; /* Center horizontally */
+  margin-top: -60px; /* Center vertically on the line */
+  
+  transform-origin: center 760px; /* Radius (700) + item half height (60) */
+}
+
+/* The actual image container */
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  background: #000;
+  position: relative;
+  z-index: 10;
+}
+
+/* Counter-rotate the image so it stays upright while the orbit rotates */
+.imageInner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.activeItem .imageWrapper {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+  transform: scale(1.5);
+  z-index: 20;
+}
+
+.memberName {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 243, 255, 0.8);
+}
+
+.activeItem .memberName {
+  opacity: 1;
+}
+
+.aboutSection {
+  margin-top: 0; /* Because orbit is naturally pushing down? No, absolute positioning. */
+  padding-top: 2rem; /* Reduced from 15rem to fit closer to images */
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  z-index: 10;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.aboutTitle {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(180deg, #fff 0%, var(--color-text-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.aboutRole {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.aboutBio {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.socialIcon {
+  color: var(--color-text-secondary);
+  transition: all 0.3s;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socialIcon:hover {
+  background: var(--color-primary);
+  color: #000;
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+.navButton {
+  position: absolute;
+  top: 200px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.navButton:hover {
+  background: var(--color-primary);
+  color: black;
+}
+
+.prev { left: 10%; }
+.next { right: 10%; }
