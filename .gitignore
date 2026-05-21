@@ -37,3 +37,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Antigravity/Agent planning artifacts
+.agent/
+.planning/
+.gemini/
