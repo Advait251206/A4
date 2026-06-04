@@ -86,9 +86,9 @@ npm run dev
 ## 👨‍💻 Built with ❤️ by Section A4 Creators
 
 The official platform was co-developed by:
-* **Advait Kawale**
-* **Ranveer Bhortekar**
-* **Krish Parothi**
+* **[Advait Kawale](https://github.com/Advait251206)**
+* **[Ranveer Bhortekar](https://github.com/Ranveer-9449)**
+* **[Krish Parothi](https://github.com/Krish-Parothi)**
 * **Atif Azmi**
 * **Om Singh**
 * **Pranav Pardhi**
